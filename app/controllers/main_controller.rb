@@ -3,7 +3,7 @@ require 'ostruct'
 
 class MainController < ApplicationController
   layout "main", :except => :results
-  before_filter :check_user_profile
+  before_action :check_user_profile
 
   def index
     @past_contests = Contest.finished.paginate(:page => params.fetch(:past_contests_page, 1), :per_page => 20)

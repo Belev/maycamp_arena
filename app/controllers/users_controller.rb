@@ -3,7 +3,7 @@
 require 'uri'
 
 class UsersController < ApplicationController
-  before_filter :login_required_without_data_check, :only => [:update]
+  before_action :login_required_without_data_check, :only => [:update]
   layout "main"
 
   def new
