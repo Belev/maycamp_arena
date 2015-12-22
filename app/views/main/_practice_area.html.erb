@@ -10,7 +10,7 @@
       </tr>
       <% @contest_groups.each do |contest_group| %>
           <tr>
-            <td><%= link_to contest_group.name, contest_group %></td>
+            <td><%= link_to contest_group.name, contest_group_path(contest_group) %></td>
           </tr>
       <% end %>
     </table>
