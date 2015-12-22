@@ -26,6 +26,9 @@
     <% if policy(:reports).show? %>
       <li><%= link_to "Доклади", admin_reports_path %></li>
     <% end %>
+    <% if policy(:contest_groups).index? %>
+      <li><%= link_to "Групи", admin_contest_groups_path %></li>
+    <% end %>
     <% if policy(:contests).index? %>
       <li><%= link_to "Състезания", admin_contests_path %></li>
     <% end %>
