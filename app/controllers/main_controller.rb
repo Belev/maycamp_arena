@@ -3,7 +3,7 @@ require 'ostruct'
 
 class MainController < ApplicationController
   layout "main", :except => :results
-  before_filter :check_user_profile
+  before_action :check_user_profile
 
   def index
     @past_contests = Contest.finished.paginate(:page => params.fetch(:past_contests_page, 1), :per_page => 20)
@@ -15,12 +15,7 @@ class MainController < ApplicationController
     end
 
     @upcoming_contests = Contest.upcoming.select {|contest| contest.visible or current_user.andand.admin?}
-    @practice_contests = WillPaginate::Collection.create(params[:practice_contests_page] || 1, 20) do |pager|
-      practice_contests = Contest.practicable.select {|contest| contest.visible or current_user.andand.admin?}.reverse
-
-      pager.replace (practice_contests[pager.offset, pager.per_page] || [])
-      pager.total_entries = practice_contests.length
-    end
+    @contest_groups = ContestGroup.paginate(:page => params[:contest_groups_page], :per_page => 20)
   end
 
   def rules

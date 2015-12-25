@@ -1,7 +1,7 @@
 @admin
 Feature: Administrator login
   In order to be able to control the system
-  As a administrator
+  As an administrator
   I want to be able to login as an administrator
   
   Scenario: Login to the admin panel

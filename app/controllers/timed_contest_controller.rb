@@ -3,8 +3,8 @@ require 'common_contest_actions'
 class TimedContestController < ApplicationController
   include CommonContestActions
 
-  before_filter :login_required
-  before_filter :verify_contest
+  before_action :login_required
+  before_action :verify_contest
 
   def open_contest
     @run = Run.new

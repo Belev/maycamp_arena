@@ -1,0 +1,28 @@
+<h1>Групи</h1>
+<br />
+<% if @contest_groups.present? %>
+  <p><%= will_paginate @contest_groups %></p>
+  <table>
+    <tr>
+      <th>Име</th>
+      <th>Действия</th>
+    </tr>
+    <% @contest_groups.each do |contest_group| %>
+      <tr>
+        <td><%= contest_group.name %></td>
+        <td>
+          <%= link_to "Промяна", edit_admin_contest_group_path(contest_group) %>
+          <%= link_to "Изтриване", admin_contest_group_path(contest_group), :data => { :confirm => "Сигурни ли сте, че желаете да изтриете тази група?" }, :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <p><%= will_paginate @contest_groups %></p>
+<% else %>
+  Няма групи в системата.
+<% end %>
+<br />
+<p>
+  <%= link_to "Нова група", new_admin_contest_group_path %> |
+  <%= link_to "Начална страница", root_path %>
+</p>
