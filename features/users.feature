@@ -3,13 +3,13 @@ Feature: User stats
   As a visitor
   I want to be able to browse the users
 
-  Scenario: Open a user stats as anonmous user
+  Scenario: Open a user stats as anonymous user
     Given there is a user with attributes:
       | name                  | Valentin Mihov            |
     When I am on the user stats page for user "Valentin Mihov"
     Then I should see "Статистика"
 
-  Scenario: Open a user stats for a user with external contests as anonmous
+  Scenario: Open a user stats for a user with external contests as anonymous
     Given there is a user with attributes:
       | name                  | Valentin Mihov            |
     And there is an external_contest_result for user "Valentin Mihov"
@@ -29,9 +29,13 @@ Feature: User stats
   Scenario: Update user profile
     Given I am logged in as contestant user with attributes:
       | name | Valentin Mihov |
+    And there is a contest_group with attributes:
+      | name | Group |
     And there is a finished contest with attributes:
       | name        | Fall contest |
       | practicable | true         |
+    And the contest "Fall contest" belongs to the contest_group "Group"
     And I am on the homepage
+    And I follow "Group"
     And I follow "Практикувай"
     Then I should see "Практикуване на Fall contest"

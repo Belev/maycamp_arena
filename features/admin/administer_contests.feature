@@ -1,7 +1,7 @@
 @admin @contests
 Feature: Administer contests
   In order to be able to control the system
-  As a administrator
+  As an administrator
   I want to be able to administer the contests
   
   Background:
@@ -10,6 +10,8 @@ Feature: Administer contests
       | name                  | Valentin Mihov            |
       | email                 | valentin.mihov@gmail.com  |
       | unencrypted_password  | secret                    |
+    And there is a contest_group with attributes:
+      | name | Group |
     And I am not logged in
     And I am on the login page
     And I fill in the following:
@@ -23,6 +25,7 @@ Feature: Administer contests
     And I fill in the following:
       | Име: | Fall contest |
       | Продължителност: | 120 |
+    And I select "Group" from "Група:"
     And I select "October 16, 2014 16:21:39" as the "Начало:" datetime
     And I select "October 18, 2014 16:21:39" as the "Край:" datetime
     And I press "Създаване"
@@ -36,6 +39,7 @@ Feature: Administer contests
     And I fill in the following:
       | Име: | Fall contest |
       | Продължителност: | 120 |
+    And I select "Group" from "Група:"
     And I select "October 16, 2014 16:21:39" as the "Начало:" datetime
     And I select "October 18, 2014 16:21:39" as the "Край:" datetime
     And I press "Създаване"
@@ -50,6 +54,7 @@ Feature: Administer contests
     And I fill in the following:
       | Име: | Fall contest |
       | Продължителност: | 120 |
+    And I select "Group" from "Група:"
     And I select "October 16, 2014 16:21:39" as the "Начало:" datetime
     And I select "October 18, 2014 16:21:39" as the "Край:" datetime
     And I press "Създаване"
@@ -67,6 +72,7 @@ Feature: Administer contests
     And I fill in the following:
       | Име: | Fall contest |
       | Продължителност: | 120 |
+    And I select "Group" from "Група:"
     And I select "October 16, 2014 16:21:39" as the "Начало:" datetime
     And I select "October 18, 2014 16:21:39" as the "Край:" datetime
     And I press "Създаване"
