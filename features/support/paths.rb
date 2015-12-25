@@ -22,6 +22,10 @@ module NavigationHelpers
       admin_contests_path
     when /the contest edit page for contest "([^\"]+)" in the admin panel/
       edit_admin_contest_path(Contest.find_by_name!($1))
+    when /the contest group list in the admin panel/
+      admin_contest_groups_path
+    when /the contest group edit page for contest group "([^\"]+)" in the admin panel/
+      edit_admin_contest_group_path(ContestGroup.find_by_name!($1))
     when /the problem list for contest "([^\"]+)" in the admin panel/
       admin_contest_problems_path(:contest_id => Contest.find_by_name!($1))
     when /the problem view page in the admin panel/
