@@ -7,7 +7,7 @@
       <th>Име</th>
       <th>Действия</th>
     </tr>
-    <% for contest_group in @contest_groups do %>
+    <% @contest_groups.each do |contest_group| %>
       <tr>
         <td><%= contest_group.name %></td>
         <td>
