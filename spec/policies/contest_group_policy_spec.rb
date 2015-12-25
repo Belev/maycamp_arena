@@ -5,7 +5,7 @@ describe ContestGroupPolicy do
   let(:contester) { create(:user, role: User::CONTESTER) }
 
   [
-      :index?, :new?, :create?, :edit?, :update?, :destroy?
+    :index?, :new?, :create?, :edit?, :update?, :destroy?
   ].each do |action|
     permissions action do
       it "denies access to anonymous users" do

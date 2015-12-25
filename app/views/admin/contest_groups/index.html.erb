@@ -1,26 +1,25 @@
 <h1>Групи</h1>
 <br />
-
-<% if !@contest_groups.blank? %>
-    <p><%= will_paginate @contest_groups %></p>
-    <table>
+<% if @contest_groups.present? %>
+  <p><%= will_paginate @contest_groups %></p>
+  <table>
+    <tr>
+      <th>Име</th>
+      <th>Действия</th>
+    </tr>
+    <% for contest_group in @contest_groups do %>
       <tr>
-        <th>Име</th>
-        <th>Действия</th>
+        <td><%= contest_group.name %></td>
+        <td>
+          <%= link_to "Промяна", edit_admin_contest_group_path(contest_group) %>
+          <%= link_to "Изтриване", admin_contest_group_path(contest_group), :data => { :confirm => "Сигурни ли сте, че желаете да изтриете тази група?" }, :method => :delete %>
+        </td>
       </tr>
-      <% for contest_group in @contest_groups do %>
-          <tr>
-            <td><%= contest_group.name %></td>
-            <td>
-              <%= link_to "Промяна", edit_admin_contest_group_path(contest_group) %>
-              <%= link_to "Изтриване", admin_contest_group_path(contest_group), :data => { :confirm => "Сигурни ли сте, че желаете да изтриете тази група?" }, :method => :delete %>
-            </td>
-          </tr>
-      <% end %>
-    </table>
-    <p><%= will_paginate @contest_groups %></p>
+    <% end %>
+  </table>
+  <p><%= will_paginate @contest_groups %></p>
 <% else %>
-    Няма групи в системата.
+  Няма групи в системата.
 <% end %>
 <br />
 <p>
